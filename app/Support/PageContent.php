@@ -13,7 +13,14 @@ class PageContent
             }
         }
 
-        return array_replace($values, config('english-content', []));
+        $values = array_replace($values, config('english-content', []));
+        foreach ($values as $key => $value) {
+            if (is_string($value)) {
+                $values[$key] = str_replace(['HOANG THUOC MEDICAL', 'Hoang Thuoc Medical', 'Hoàng Thuộc Medical', 'HOÀNG THUỘC', 'Hoàng Thuộc', 'HOANG THUOC', 'Hoang Thuoc'], 'REVOMED', $value);
+            }
+        }
+
+        return array_replace($values, config('revomed-content', []));
     }
 
     public static function localized(array $saved): array

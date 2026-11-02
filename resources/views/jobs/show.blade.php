@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $job->localized('title').' | '.($site['site_title'] ?? 'Hoang Thuoc Medical'))
+@section('title', $job->localized('title').' | '.($site['site_title'] ?? 'REVOMED'))
 @section('meta_description', $job->localized('summary'))
 
 @section('content')

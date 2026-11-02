@@ -1,22 +1,11 @@
 @php
-    $email = $site['company_email'] ?? 'phongnhansu@hoangthuocmedical.com';
+    $en = $locale === 'en';
+    $email = $site['company_email'] ?? '';
     $phone = $site['company_phone'] ?? '';
     $address = $site['company_address_'.$locale] ?? '';
 @endphp
-<footer class="footer">
-    <div class="container footer-grid">
-        <div><a class="brand brand-logo footer-brand" href="{{ route('home') }}"><img class="company-logo" src="{{ !empty($site['site_logo']) ? asset('storage/'.$site['site_logo']) : asset('images/hoang-thuoc-logo.png') }}" alt="Hoang Thuoc Medical"></a><strong class="footer-brand-name" data-content-keys="company_name">{{ $site['company_name'] }}</strong>@if(!empty($site['footer_description_'.$locale]))<p data-content-keys="footer_description_vi">{{ $site['footer_description_'.$locale] }}</p>@endif</div>
-        <div>
-            <strong>{{ __('Kết nối cùng chúng tôi') }}</strong>
-            <div class="footer-contact-list">
-                @if($email)<a class="footer-contact-row" href="mailto:{{ $email }}"><x-admin-icon name="mail" size="18" /><span>{{ $email }}</span></a>@endif
-                @if($phone)<a class="footer-contact-row" href="tel:{{ preg_replace('/[^0-9+]/', '', $phone) }}"><x-admin-icon name="phone" size="18" /><span>{{ $phone }}</span></a>@endif
-            </div>
-            <div class="footer-contact-row footer-company"><x-admin-icon name="building" size="18" /><div>{{ $site['company_legal_name'] ?? '' }}@if(!empty($site['company_tax_id']))<br>{{ __('Mã số thuế:') }} {{ $site['company_tax_id'] }}@endif</div></div>
-        </div>
-        <div><strong>{{ __('Địa chỉ') }}</strong>
-            @if($address)<a class="footer-contact-row footer-address" href="https://www.google.com/maps/search/?api=1&amp;query={{ rawurlencode($address) }}" target="_blank" rel="noopener noreferrer"><x-admin-icon name="pin" size="18" /><span>{{ $address }}<small class="footer-map-label">{{ __('Xem trên bản đồ ↗') }}</small></span></a>@endif
-        </div>
-    </div>
-    <div class="container footer-bottom">© {{ date('Y') }} {{ $site['company_name'] ?? 'Hoang Thuoc Medical' }}. {{ __('Thông tin ứng viên được bảo mật.') }}<br>@include('partials.developer-credit')</div>
+<footer class="rm-footer">
+    @unless(request()->routeIs('home'))<div class="rm-container rm-footer-invite"><div><span class="rm-eyebrow">LET'S CONNECT</span><h2>{{ $en ? 'Together, we move healthcare forward.' : 'Cùng kết nối. Cùng tiến xa.' }}</h2></div><a class="rm-link" href="{{ route('contact.create') }}"><span class="rm-circle" aria-hidden="true">↗</span>{{ $en ? 'Contact REVOMED' : 'Liên hệ REVOMED' }}</a></div>@endunless
+    <div class="rm-container rm-footer-grid"><div class="rm-footer-brand"><a href="{{ route('home') }}"><img src="{{ !empty($site['site_logo']) ? asset('storage/'.$site['site_logo']) : asset('images/revomed-logo.svg') }}" alt="REVOMED — Revolution Medical" width="250" height="70" loading="lazy"></a><p data-content-keys="footer_description_vi">{{ $site['footer_description_'.$locale] ?? '' }}</p></div><div><h3>{{ $en ? 'Explore' : 'Khám phá' }}</h3><a href="{{ route('about') }}">{{ $en ? 'About REVOMED' : 'Về REVOMED' }}</a><a href="{{ route('about') }}#san-pham">{{ $en ? 'Medical solutions' : 'Giải pháp y khoa' }}</a><a href="{{ route('team') }}">{{ $en ? 'Our team' : 'Đội ngũ' }}</a></div><div><h3>{{ $en ? 'Stay connected' : 'Đồng hành' }}</h3><a href="{{ route('news') }}">{{ $en ? 'Newsroom' : 'Tin tức' }}</a><a href="{{ route('jobs.index') }}">{{ $en ? 'Careers' : 'Tuyển dụng' }}</a><a href="{{ route('contact.create') }}">{{ $en ? 'Contact us' : 'Liên hệ' }}</a></div><div><h3>{{ $en ? 'Contact' : 'Thông tin liên hệ' }}</h3>@if($email)<a href="mailto:{{ $email }}">{{ $email }}</a>@endif @if($phone)<a href="tel:{{ preg_replace('/[^0-9+]/', '', $phone) }}">{{ $phone }}</a>@endif @if($address)<a class="rm-footer-address" href="https://www.google.com/maps/search/?api=1&amp;query={{ rawurlencode($address) }}" target="_blank" rel="noopener noreferrer">{{ $address }} ↗</a>@endif</div></div>
+    <div class="rm-container rm-footer-bottom"><span>© {{ date('Y') }} REVOMED. {{ $en ? 'All rights reserved.' : 'Bảo lưu mọi quyền.' }}</span><span>REVOLUTION MEDICAL</span><a href="{{ route('contact.create') }}">{{ $en ? 'Get in touch' : 'Kết nối với chúng tôi' }} ↗</a></div>
 </footer>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $post->localized('title').' | '.($site['site_title'] ?? $site['company_name'] ?? 'Hoang Thuoc Medical'))
+@section('title', $post->localized('title').' | '.($site['site_title'] ?? $site['company_name'] ?? 'REVOMED'))
 @section('meta_description', $post->localized('excerpt'))
 @section('content')
 <article class="container narrow section article-detail" aria-labelledby="article-title">

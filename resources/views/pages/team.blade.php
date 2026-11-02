@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', __('Đội ngũ').' | Hoang Thuoc Medical')
+@section('title', __('Đội ngũ').' | REVOMED')
 @section('content')
 <section class="page-hero"><div class="container"><span class="eyebrow" data-content-keys="team_block_1_vi">{{ $site['team_block_1_vi'] }}</span><h1 data-content-keys="team_block_2_vi">{{ $site['team_block_2_vi'] }}</h1></div></section>
 <section class="container section team-story">
-    <img class="team-portrait" data-content-keys="team_portrait_image" src="{{ !empty($site['team_portrait_image']) ? asset('storage/'.$site['team_portrait_image']) : asset('images/hero-healthcare-team.png') }}" alt="{{ !empty($site['team_portrait_image']) ? 'Chân dung anh Thuộc' : ($locale === 'en' ? 'Hoang Thuoc Medical team' : 'Đội ngũ Hoàng Thuộc Medical') }}" loading="lazy">
+    <img class="team-portrait" data-content-keys="team_portrait_image" src="{{ !empty($site['team_portrait_image']) ? asset('storage/'.$site['team_portrait_image']) : asset('images/hero-healthcare-team.png') }}" alt="{{ !empty($site['team_portrait_image']) ? 'Chân dung đội ngũ REVOMED' : ($locale === 'en' ? 'REVOMED team' : 'Đội ngũ REVOMED') }}" loading="lazy">
     <div><span class="eyebrow dark" data-content-keys="team_block_3_vi">{{ $site['team_block_3_vi'] }}</span><h2 data-content-keys="team_block_4_vi">{{ $site['team_block_4_vi'] }}</h2>
     <p data-content-keys="team_block_5_vi">{{ $site['team_block_5_vi'] }}</p>
     <p data-content-keys="team_block_6_vi">{{ $site['team_block_6_vi'] }}</p>
@@ -19,7 +19,7 @@
     @endif
     </div>
         <div class="team-group-gallery">
-            <img class="team-group-image" data-content-keys="team_group_image" src="{{ !empty($site['team_group_image']) ? asset('storage/'.$site['team_group_image']) : asset('images/hero-healthcare-team.png') }}" alt="{{ $locale === 'en' ? 'Hoang Thuoc Medical team' : 'Đội ngũ Hoàng Thuộc Medical' }}" loading="lazy">
+            <img class="team-group-image" data-content-keys="team_group_image" src="{{ !empty($site['team_group_image']) ? asset('storage/'.$site['team_group_image']) : asset('images/hero-healthcare-team.png') }}" alt="{{ $locale === 'en' ? 'REVOMED team' : 'Đội ngũ REVOMED' }}" loading="lazy">
         </div>
 </section>
 @endif

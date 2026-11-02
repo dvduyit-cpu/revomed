@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', ($locale === 'en' ? 'News' : 'Tin tức').' | '.($site['site_title'] ?? $site['company_name'] ?? 'Hoang Thuoc Medical'))
+@section('title', ($locale === 'en' ? 'News' : 'Tin tức').' | '.($site['site_title'] ?? $site['company_name'] ?? 'REVOMED'))
 @section('content')
 @include('partials.section-banner', ['bannerClass' => 'news-hero', 'imageKey' => 'news_hero_image', 'eyebrowKey' => 'news_block_1_vi', 'titleKey' => 'news_block_2_vi'])
 <section class="container news-intro"><p data-content-keys="news_block_3_vi">{{ $site['news_block_3_vi'] }}</p></section>
