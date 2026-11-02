@@ -106,13 +106,15 @@ class AdminWorkspaceTest extends TestCase
 
         $path = SiteSetting::values()['site_logo'];
         Storage::disk('public')->assertExists($path);
-        $this->get('/')->assertOk()->assertSee(asset('storage/'.$path));
+        $this->get('/thuong-hieu/logo')->assertOk()->assertHeader('Content-Type', 'image/png');
+        $this->get('/')->assertOk()->assertSee(route('site.logo', ['v' => substr(hash('sha256', $path), 0, 12)], false));
 
         $this->put('/admin/settings', $this->configuration())->assertSessionHasNoErrors();
         $this->assertDatabaseHas('site_settings', ['key' => 'site_logo', 'value' => $path]);
 
         $this->put('/admin/settings', $this->configuration(['remove_logo' => 1]))->assertSessionHasNoErrors();
-        $this->get('/')->assertOk()->assertSee(asset('images/revomed-logo.svg'))->assertDontSee(asset('storage/'.$path));
+        $this->get('/thuong-hieu/logo')->assertNotFound();
+        $this->get('/')->assertOk()->assertSee(asset('images/revomed-logo.svg'))->assertDontSee(route('site.logo', ['v' => substr(hash('sha256', $path), 0, 12)], false));
     }
 
     public function test_non_image_and_oversized_logos_are_rejected(): void
@@ -123,5 +125,53 @@ class AdminWorkspaceTest extends TestCase
             $this->actingAs($admin)->put('/admin/settings', $this->configuration(['logo' => $logo]))->assertSessionHasErrors('logo');
         }
         $this->assertDatabaseCount('site_settings', 0);
+    }
+
+    public function test_failed_logo_write_keeps_existing_configuration_and_shows_an_error(): void
+    {
+        SiteSetting::putMany(['site_logo' => 'branding/previous.png', 'admin_name' => 'Existing name']);
+        $disk = \Mockery::mock(\Illuminate\Filesystem\FilesystemAdapter::class);
+        $disk->shouldReceive('putFileAs')->once()->andReturn(false);
+        Storage::shouldReceive('disk')->with('public')->andReturn($disk);
+
+        $this->actingAs(User::factory()->create(['role' => 'admin', 'is_active' => true]))
+            ->from('/admin/settings')->put('/admin/settings', $this->configuration([
+                'logo' => UploadedFile::fake()->image('logo.png'),
+            ]))->assertRedirect('/admin/settings')->assertSessionHasErrors('logo')->assertSessionMissing('success');
+
+        $this->assertDatabaseHas('site_settings', ['key' => 'site_logo', 'value' => 'branding/previous.png']);
+        $this->assertDatabaseHas('site_settings', ['key' => 'admin_name', 'value' => 'Existing name']);
+    }
+
+    public function test_logo_write_exception_returns_a_validation_error(): void
+    {
+        $disk = \Mockery::mock(\Illuminate\Filesystem\FilesystemAdapter::class);
+        $disk->shouldReceive('putFileAs')->once()
+            ->andThrow(\League\Flysystem\UnableToWriteFile::atLocation('branding/logo.png'));
+        Storage::shouldReceive('disk')->with('public')->andReturn($disk);
+
+        $this->actingAs(User::factory()->create(['role' => 'admin', 'is_active' => true]))
+            ->from('/admin/settings')->put('/admin/settings', $this->configuration([
+                'logo' => UploadedFile::fake()->image('logo.png'),
+            ]))->assertRedirect('/admin/settings')->assertSessionHasErrors('logo')->assertSessionMissing('success');
+
+        $this->assertDatabaseCount('site_settings', 0);
+    }
+
+    public function test_public_logo_endpoint_only_serves_an_existing_raster_image(): void
+    {
+        Storage::fake('public');
+        foreach (['branding/missing.png', '../private/secret.png', 'branding/not-an-image.php'] as $path) {
+            SiteSetting::putMany(['site_logo' => $path]);
+            $this->get('/thuong-hieu/logo')->assertNotFound();
+        }
+        Storage::disk('public')->put('branding/not-an-image.php', '<?php echo "secret";');
+        $this->get('/thuong-hieu/logo')->assertNotFound();
+
+        $path = UploadedFile::fake()->image('logo.png')->store('branding', 'public');
+        SiteSetting::putMany(['site_logo' => $path]);
+        $response = $this->get('/thuong-hieu/logo')->assertOk()->assertHeader('Content-Type', 'image/png');
+        $this->assertSame(Storage::disk('public')->path($path), $response->baseResponse->getFile()->getPathname());
+        $this->get('/admin/login')->assertOk()->assertSee('/thuong-hieu/logo?v=', false);
     }
 }

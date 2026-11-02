@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class SiteSettingController extends Controller
@@ -31,13 +32,28 @@ class SiteSettingController extends Controller
             'admin_font_size' => ['required', 'integer', 'between:14,20'],
             'logo' => ['nullable', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
             'remove_logo' => ['sometimes', 'boolean'],
+        ], [
+            'logo.uploaded' => 'Không tải được logo. Vui lòng chọn ảnh PNG, JPG hoặc WebP tối đa 2 MB và kiểm tra giới hạn upload của hosting.',
+            'logo.image' => 'Logo phải là tệp ảnh PNG, JPG hoặc WebP hợp lệ.',
+            'logo.mimes' => 'Logo chỉ hỗ trợ PNG, JPG hoặc WebP.',
+            'logo.max' => 'Logo vượt quá 2 MB. Vui lòng giảm dung lượng ảnh rồi tải lại.',
         ]);
 
         unset($values['logo'], $values['remove_logo']);
         $uploadedPath = null;
 
         if ($request->hasFile('logo')) {
-            $uploadedPath = $request->file('logo')->store('branding', 'public');
+            try {
+                $uploadedPath = $request->file('logo')->store('branding', 'public');
+            } catch (\League\Flysystem\FilesystemException $exception) {
+                report($exception);
+                $uploadedPath = false;
+            }
+            if (! is_string($uploadedPath) || $uploadedPath === '') {
+                throw ValidationException::withMessages([
+                    'logo' => 'Không thể lưu logo. Vui lòng kiểm tra quyền ghi thư mục storage/app/public trên hosting rồi thử lại.',
+                ]);
+            }
             $values['site_logo'] = $uploadedPath;
         } elseif ($request->boolean('remove_logo')) {
             $values['site_logo'] = '';
