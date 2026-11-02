@@ -112,7 +112,7 @@ class AdminWorkspaceTest extends TestCase
         $this->assertDatabaseHas('site_settings', ['key' => 'site_logo', 'value' => $path]);
 
         $this->put('/admin/settings', $this->configuration(['remove_logo' => 1]))->assertSessionHasNoErrors();
-        $this->get('/')->assertOk()->assertSee(asset('images/hoang-thuoc-logo.png'))->assertDontSee(asset('storage/'.$path));
+        $this->get('/')->assertOk()->assertSee(asset('images/revomed-logo.svg'))->assertDontSee(asset('storage/'.$path));
     }
 
     public function test_non_image_and_oversized_logos_are_rejected(): void
