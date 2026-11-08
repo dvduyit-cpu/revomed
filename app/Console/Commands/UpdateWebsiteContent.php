@@ -28,10 +28,10 @@ class UpdateWebsiteContent extends Command
             }
         }
         $productKey = TeamProducts::PREFIX.'cardiovascular-solutions-overview';
-        $imagePath = 'media/2026/products/cardiovascular-solutions.png';
-        $source = public_path('images/cardiovascular-solutions.png');
+        $imagePath = 'media/ai/coronary-stent.webp';
+        $source = public_path('images/ai/coronary-stent.webp');
         if (! is_file($source)) {
-            $this->error('Missing bundled product image: public/images/cardiovascular-solutions.png');
+            $this->error('Missing bundled product image: public/images/ai/coronary-stent.webp');
 
             return self::FAILURE;
         }

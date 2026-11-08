@@ -21,7 +21,7 @@ class UpdateWebsiteContentTest extends TestCase
         $this->artisan('website:update-content')->assertSuccessful();
         $this->assertDatabaseHas('site_settings', ['key' => 'home_title_vi', 'value' => 'Nội dung đang dùng']);
         $this->assertCount(1, TeamProducts::all());
-        Storage::disk('public')->assertExists('media/2026/products/cardiovascular-solutions.png');
+        Storage::disk('public')->assertExists('media/ai/coronary-stent.webp');
         $this->assertCount(2, Storage::disk('local')->allFiles('deployment/backups'));
     }
 

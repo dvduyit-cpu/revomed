@@ -15,15 +15,15 @@ class EnglishContentTest extends TestCase
     {
         $this->get('/ngon-ngu/en?'.http_build_query(['redirect' => url('/doi-ngu')]))
             ->assertRedirect(url('/doi-ngu'))->assertSessionHas('locale', 'en');
-        foreach (['/' => 'The right technology.', '/gioi-thieu' => 'A fresh perspective',
-            '/doi-ngu' => 'Many disciplines.', '/tuyen-dung' => 'Clarify problems.',
-            '/tin-tuc' => 'Clearer information.', '/lien-he' => 'Start with what you need.'] as $path => $text) {
+        foreach (['/' => 'Connecting technology.', '/gioi-thieu' => 'Focused on technology.',
+            '/doi-ngu' => 'Connecting expertise.', '/tuyen-dung' => 'Build your career',
+            '/tin-tuc' => 'Understanding technology.', '/lien-he' => 'Connect today.'] as $path => $text) {
             $this->get($path)->assertOk()->assertSee('<html lang="en">', false)
                 ->assertSee($text, false)->assertSee('/ngon-ngu/vi?');
         }
         $this->get('/ngon-ngu/vi?'.http_build_query(['redirect' => url('/doi-ngu')]))
             ->assertRedirect(url('/doi-ngu'))->assertSessionHas('locale', 'vi');
-        $this->get('/')->assertSee('<html lang="vi">', false)->assertSee('Công nghệ phù hợp.');
+        $this->get('/')->assertSee('<html lang="vi">', false)->assertSee('Kết nối công nghệ.');
     }
 
     public function test_english_can_be_edited_and_admin_stays_in_vietnamese(): void

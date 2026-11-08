@@ -38,8 +38,8 @@ class MediaLibraryTest extends TestCase
         $this->artisan('media:import-website')->assertSuccessful();
         $files = Storage::disk('public')->allFiles();
         $this->assertNotEmpty($files);
-        $this->assertTrue(collect($files)->contains(fn ($path) => str_contains($path, '/website/hoang-thuoc-logo-')));
-        $this->assertTrue(collect($files)->contains(fn ($path) => str_contains($path, '/website/hero-healthcare-team-')));
+        $this->assertTrue(collect($files)->contains(fn ($path) => str_contains($path, '/website/heart-hero-')));
+        $this->assertTrue(collect($files)->contains(fn ($path) => str_contains($path, '/website/research-team-')));
         $this->artisan('media:import-website')->assertSuccessful();
         $this->assertSame($files, Storage::disk('public')->allFiles());
         $this->actingAs(User::factory()->create(['role' => 'admin', 'is_active' => true]));
@@ -60,7 +60,7 @@ class MediaLibraryTest extends TestCase
         $this->get('/')->assertOk()->assertSee(asset('storage/'.$path));
         $this->put('/admin/noi-dung/trang-chu', ['settings' => ['home_hero_image' => '']])->assertSessionHasNoErrors();
         Storage::disk('public')->assertExists($path);
-        $this->get('/')->assertSee(asset('images/hero-healthcare-team.png'));
+        $this->get('/')->assertSee(asset('images/ai/research-team.webp'));
     }
 
     public function test_invalid_selection_and_unauthorized_uploads_are_rejected(): void

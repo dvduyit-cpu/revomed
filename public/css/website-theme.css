@@ -13,7 +13,7 @@ main p,.about-story p,.team-story p,.medical-solutions p,.value-grid p,.contact-
 .footer,.hp-culture-mark,.hp-hero{background-color:var(--web-dark)}
 .footer{background:var(--web-dark)}
 .hp-hero-shade{background:linear-gradient(90deg,color-mix(in srgb,var(--web-dark) 94%,transparent),color-mix(in srgb,var(--web-dark) 80%,transparent) 35%,color-mix(in srgb,var(--web-dark) 10%,transparent) 85%),linear-gradient(0deg,color-mix(in srgb,var(--web-dark) 50%,transparent),transparent 35%)}
-.page-hero{background-color:var(--web-dark);background-image:linear-gradient(90deg,color-mix(in srgb,var(--web-dark) 90%,transparent),color-mix(in srgb,var(--web-dark) 48%,transparent)),url('/images/hero-healthcare-team.png')}
+.page-hero{background-color:var(--web-dark);background-image:linear-gradient(90deg,color-mix(in srgb,var(--web-dark) 90%,transparent),color-mix(in srgb,var(--web-dark) 48%,transparent)),url('/images/ai/research-team.webp')}
 .hp-hero h1,.home-premium .hp-hero h1,.page-hero h1{color:#fff}
 .hp-hero p,.home-premium .hp-hero p,.page-hero p{color:#e2e8f0}
 @media(max-width:600px){.hp-hero-shade{background:linear-gradient(90deg,color-mix(in srgb,var(--web-dark) 94%,transparent),color-mix(in srgb,var(--web-dark) 65%,transparent))}}

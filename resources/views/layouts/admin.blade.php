@@ -19,7 +19,7 @@
 <a class="skip-link" href="#main-content">Đến nội dung chính</a>
 <button class="sidebar-overlay" type="button" data-close-menu aria-label="Đóng menu" hidden></button>
 <aside class="sidebar" id="sidebar" aria-label="Menu quản trị">
-    <a class="brand" href="{{ route('admin.dashboard') }}"><span class="brand-logo"><img src="{{ !empty($site['site_logo']) ? route('site.logo', ['v' => substr(hash('sha256', $site['site_logo']), 0, 12)], false) : asset('images/hoang-thuoc-logo.png') }}" alt=""></span><span><strong>{{ $adminName }}</strong><small>QUẢN TRỊ WEBSITE</small></span></a>
+    <a class="brand" href="{{ route('admin.dashboard') }}"><span class="brand-logo"><img src="{{ !empty($site['site_logo']) ? route('site.logo', ['v' => substr(hash('sha256', $site['site_logo']), 0, 12)], false) : asset('images/revomed-logo.svg') }}" alt=""></span><span><strong>{{ $adminName }}</strong><small>QUẢN TRỊ WEBSITE</small></span></a>
     <nav aria-label="Điều hướng chính">
         <details class="nav-group" open><summary>NỘI DUNG & TUYỂN DỤNG <span>⌄</span></summary>
             @foreach([['admin.dashboard', 'dashboard', 'Tổng quan', 'admin.dashboard'], ['admin.jobs.index', 'briefcase', 'Tin tuyển dụng', 'admin.jobs.*'], ['admin.news.index', 'news', 'Tin tức & bài viết', 'admin.news.*'], ['admin.content.index', 'layers', 'Nội dung website', 'admin.content.*']] as [$route, $icon, $label, $pattern])

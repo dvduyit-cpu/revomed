@@ -1,0 +1,213 @@
+/* Shared proportions for the medical portfolio. Loaded after the legacy theme. */
+.revomed-site {
+    --portfolio-blue: #174b78;
+    --portfolio-ink: #202b35;
+    --portfolio-pale: #f1f5fa;
+    --portfolio-gutter: clamp(24px, 5vw, 96px);
+    --portfolio-space: clamp(64px, 7.8vw, 112px);
+    --portfolio-gap: clamp(24px, 3.3vw, 48px);
+    --portfolio-radius: clamp(24px, 2.5vw, 40px);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: var(--portfolio-ink);
+    background: linear-gradient(135deg,#faf7fb,#f2f6fc 50%,#f9f7fc);
+}
+.revomed-site .rm-container,.revomed-site .container {
+    width: min(1296px, calc(100% - 2 * var(--portfolio-gutter)));
+    margin-inline: auto;
+}
+.revomed-site :is(h1,h2,h3) { font-weight: 300; letter-spacing: -.035em; text-wrap: pretty; }
+.revomed-site .revomed-home :is(h1,h2,h3) { white-space: normal; }
+.revomed-site .revomed-home p { font-weight: 400; letter-spacing: 0; word-spacing: normal; text-align: left; line-height: 1.75; }
+.revomed-site .home-premium.revomed-home { background: transparent; }
+.revomed-site .rm-eyebrow { color: var(--portfolio-blue); font-size: 11px; font-weight: 500; letter-spacing: .12em; margin: 0 0 24px; }
+.revomed-site .rm-link { font-size: 14px; font-weight: 400; gap: 16px; }
+.revomed-site .rm-circle { width: 44px; height: 44px; flex: 0 0 44px; }
+.revomed-site .rm-link:hover .rm-circle { color: white; background: var(--portfolio-blue); border-color: var(--portfolio-blue); }
+/* Transparent header and compact menu, matching the reference's navigation scale. */
+.revomed-site .site-header { position: relative; background: white; border: 0; }
+.revomed-site:has(.revomed-home) .site-header { position: absolute; inset: 0 0 auto; background: transparent; z-index: 50; }
+.revomed-site .site-header .nav.nav-rebuild { width: calc(100% - 2 * var(--portfolio-gutter)); max-width: none; min-height: 112px; padding: 24px 0; gap: 32px; }
+.revomed-site .brand-logo { width: 140px; }
+.revomed-site .brand-logo .company-logo { width: 140px!important; height: 60px!important; object-fit: contain; }
+.revomed-site:has(.revomed-home) .brand-logo { background: #fffffff2; border-radius: 12px; padding: 6px 12px; width: 140px; }
+.revomed-site:has(.revomed-home) .brand-logo .company-logo { width: 116px!important; height: 48px!important; }
+body.revomed-site:has(.revomed-home) .site-header .brand.brand-logo { width: 80px!important; display: flex; justify-content: center; padding: 8px; }
+body.revomed-site:has(.revomed-home) .site-header .brand-logo .company-logo { width: 64px!important; height: 48px!important; object-position: center; }
+.rm-header-context { display: flex; align-items: center; gap: 16px; margin-right: auto; color: white; font-size: 12px; text-transform: uppercase; letter-spacing: .035em; }
+.rm-header-context>span[aria-hidden] { font-size: 25px; font-weight: 300; opacity: .6; }
+.revomed-site .site-menu-toggle { display: flex; justify-content: center; align-items: center; margin-left: auto; width: 48px; height: 44px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--portfolio-ink); cursor: pointer; }
+.revomed-site .site-menu-toggle>span { font-size: 0; position: relative; width: 38px; height: 12px; border-top: 2px solid currentColor; border-bottom: 2px solid currentColor; }
+.revomed-site:has(.revomed-home) .site-menu-toggle { color: white; }
+.revomed-site .site-header .primary-nav { display: none; position: absolute; top: 96px; right: var(--portfolio-gutter); left: auto; width: min(380px,calc(100% - 2 * var(--portfolio-gutter))); padding: 24px 32px; background: #fffffff5; backdrop-filter: blur(20px); border: 1px solid #dce4eb; border-radius: 24px; box-shadow: 0 16px 50px #143f651a; flex-direction: column; align-items: stretch; gap: 4px; max-height: calc(100svh - 128px); overflow-y: auto; }
+.revomed-site .site-header .primary-nav.is-open { display: flex; }
+.revomed-site .site-header .primary-nav a { color: var(--portfolio-ink); padding: 10px 0; font-size: 17px; font-weight: 400; }
+.revomed-site .site-header .primary-nav .locale-toggle { padding-left: 0; border-left: 0; border-top: 1px solid #dce4eb; margin-top: 12px; }
+/* Hero: full viewport, twelve-percent text inset, light typography. */
+.revomed-site .rm-hero { min-height: 760px; height: 100svh; max-height: 1100px; padding: 0; background: #093563; color: white; isolation: isolate; }
+.revomed-site .rm-hero-image.hp-hero-image { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% center; filter: none; opacity: 1; }
+.revomed-site .rm-hero-wash.hp-hero-shade { background: linear-gradient(90deg,#062850b8, #06285062 48%, #06285008 80%),linear-gradient(180deg,#06285050,transparent 24%,transparent 80%,#06285050); }
+.revomed-site .rm-hero-content { width: 76%; min-height: 100%; padding: 180px 0 140px; justify-content: center; }
+.revomed-site .rm-hero-content>.rm-eyebrow { color: #e3eff9; font-size: 11px; margin-bottom: 24px; }
+.revomed-site .rm-hero h1 { color: white; font-size: clamp(52px,5.3vw,82px); font-weight: 300; line-height: 1.12; letter-spacing: -.04em; max-width: 940px; margin: 0 0 40px; }
+.revomed-site .rm-hero-content>p { max-width: 540px; color: #f4f8ff; font-size: 16px; margin: 0 0 28px; line-height: 1.65; }
+.revomed-site .rm-hero .rm-link { color: white; }
+.revomed-site .rm-hero-bottom { width: 76%; bottom: 32px; color: #d4e4f3; border: 0; padding: 0; }
+.revomed-site .rm-hero-bottom .rm-hero-page { display: none; }
+.revomed-site .rm-opportunity { background: transparent; border: 0; }
+.revomed-site .rm-opportunity>.rm-container { min-height: 64px; border-bottom: 1px solid #dce2e9; }
+/* Raised translucent introduction over a wide rounded image. */
+.revomed-site .rm-solutions { padding: var(--portfolio-space) 0 0; background: transparent; }
+.rm-intro-stage { position: relative; padding: 0 0 clamp(160px,18vw,260px); margin-bottom: var(--portfolio-space); isolation: isolate; }
+.revomed-site .rm-intro-backdrop { position: absolute; z-index: -1; width: calc(100% - 2 * var(--portfolio-gutter)); left: var(--portfolio-gutter); bottom: 0; height: 70%; object-fit: cover; border-radius: var(--portfolio-radius); }
+.revomed-site .rm-section-heading.hp-intro { width: 76%; max-width: 1120px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px 56px; padding: clamp(40px,5vw,72px); margin: 0 auto; border: 1px solid #d9e0e7; border-radius: var(--portfolio-radius); background: #ffffffd9; backdrop-filter: blur(18px); align-items: start; }
+.revomed-site .rm-section-heading.hp-intro>div { grid-column: 1/-1; }
+.revomed-site .rm-section-heading.hp-intro h2 { font-size: clamp(34px,4vw,58px); color: var(--portfolio-ink); line-height: 1.15; margin: 0; }
+.revomed-site .rm-section-heading.hp-intro h2 br { display: none; }
+.revomed-site .rm-section-heading.hp-intro>p { margin: 0; max-width: none; font-size: 16px; color: #4d5863; }
+.revomed-site .rm-section-heading.hp-intro>.rm-intro-statement { font-size: clamp(24px,2.3vw,34px); font-weight: 300; line-height: 1.45; color: var(--portfolio-ink); }
+/* Main product stage uses a consistent 50/50 split, with a shared card selector below. */
+.revomed-site .rm-product-carousel { position: relative; padding-left: 0; margin-bottom: var(--portfolio-space); }
+.rm-product-rail { position: absolute; left: -44px; top: 30px; height: 360px; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; letter-spacing: .1em; color: #657583; }
+.rm-product-rail:before { content: ''; display: inline-block; height: 100px; border-left: 1px solid #c8d2dc; margin-bottom: 28px; }
+.revomed-site .rm-product-track { border-radius: var(--portfolio-radius); background: #edf4fb; }
+.revomed-site .rm-product { grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; min-height: 560px; padding: 0; border-radius: var(--portfolio-radius); background: #edf4fb; }
+.revomed-site .rm-product-visual { grid-column: 2; grid-row: 1; min-width: 0; min-height: 560px; aspect-ratio: auto; border-radius: 0; background: #e6f0fb; }
+.revomed-site .rm-product-visual:after { display: none; }
+.revomed-site .rm-product-visual img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.revomed-site .rm-product-number { top: 28px; left: auto; right: 28px; font-size: 12px; }
+.revomed-site .rm-product-copy { grid-column: 1; grid-row: 1; padding: clamp(32px,4vw,58px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.revomed-site .rm-product-copy h3 { color: var(--portfolio-ink); font-size: clamp(32px,3vw,44px); font-weight: 300; line-height: 1.2; margin: 0 0 24px; }
+.revomed-site .rm-product-copy p { color: #536271; font-size: 16px; line-height: 1.75; margin: 0 0 32px; max-width: 470px; }
+.revomed-site .rm-carousel-controls { border: 0; padding: 24px 0; margin: 0; min-height: 96px; }
+.revomed-site .rm-carousel-controls>span { font-size: 15px; font-weight: 300; }
+.revomed-site .rm-carousel-controls button { width: 48px; height: 48px; border: 1px solid #cad4df; border-radius: 50%; background: #fff9; }
+.revomed-site .rm-carousel-controls button:hover:not(:disabled) { background: var(--portfolio-blue); }
+.rm-product-picker { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.rm-picker-card { position: relative; display: flex; flex-direction: column; align-items: stretch; width: 100%; min-width: 0; text-align: left; padding: 24px; border: 1px solid #d7e0e9; border-radius: var(--portfolio-radius); background: #ffffff90; color: var(--portfolio-ink); cursor: pointer; font: inherit; transition: background .2s,border-color .2s; }
+.rm-picker-card[aria-pressed=true] { background: #e9f1fa; border-color: #7599bb; }
+.rm-picker-card:hover { border-color: var(--portfolio-blue); }
+.rm-picker-card img { width: 100%; aspect-ratio: 1.4; object-fit: contain; mix-blend-mode: multiply; margin: 12px 0 20px; }
+.rm-picker-index { color: #748390; font-size: 11px; }
+.rm-picker-name { font-size: clamp(18px,1.65vw,24px); font-weight: 300; line-height: 1.3; padding-right: 24px; }
+.rm-picker-arrow { position: absolute; bottom: 24px; right: 24px; font-size: 22px; }
+/* Equal columns and the same section spacing carry through the remaining content. */
+.revomed-site .rm-impact { width: calc(100% - 2 * var(--portfolio-gutter)); max-width: 1296px; margin: 0 auto var(--portfolio-space); display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; padding: 0; background: #ffffffb3; border: 1px solid #d9e0e7; border-radius: var(--portfolio-radius); overflow: hidden; }
+.revomed-site .rm-impact-art { position: relative; min-height: 520px; background: #e5eff7; }
+.revomed-site .rm-impact-art>img { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; opacity: 1; transform: none; filter: none; }
+.revomed-site .rm-impact-art :is(.rm-orbit,.rm-orbit-dot,.rm-art-label) { display: none; }
+.revomed-site .rm-impact-copy { padding: clamp(32px,4.5vw,64px); }
+.revomed-site .rm-impact h2 { font-size: clamp(32px,3.3vw,48px); color: var(--portfolio-ink); line-height: 1.2; margin: 0 0 24px; }
+.revomed-site .rm-impact p { font-size: 16px; color: #536271; margin: 0 0 32px; }
+.revomed-site .rm-careers { width: calc(100% - 2 * var(--portfolio-gutter)); max-width: 1296px; min-height: 520px; margin: 0 auto; padding: 64px 0; border-radius: var(--portfolio-radius); }
+.revomed-site .rm-careers>.rm-container { width: calc(100% - 128px); }
+.revomed-site .rm-careers-shade { background: linear-gradient(90deg,#082b50ed,#082b50b8 42%,#082b500a); }
+.revomed-site .rm-careers h2 { font-size: clamp(32px,3.7vw,54px); font-weight: 300; max-width: 600px; margin: 0 0 24px; }
+.revomed-site .rm-careers p { max-width: 480px; font-size: 16px; margin: 0 0 32px; }
+.revomed-site .rm-news { padding: var(--portfolio-space) 0; background: transparent; }
+.revomed-site .rm-news .rm-section-heading { grid-template-columns: 1fr auto; align-items: end; gap: var(--portfolio-gap); margin-bottom: 48px; }
+.revomed-site .rm-news .rm-section-heading h2 { color: var(--portfolio-ink); font-size: clamp(32px,3.7vw,54px); line-height: 1.15; }
+.revomed-site .rm-news-grid { gap: var(--portfolio-gap); }
+.revomed-site .rm-news-image { border-radius: var(--portfolio-radius); aspect-ratio: 1.65; }
+.revomed-site .rm-news-card h3 { font-size: 26px; font-weight: 300; line-height: 1.3; color: var(--portfolio-ink); }
+.revomed-site .rm-news-meta { margin: 24px 0 16px; }
+.revomed-site .rm-final { background: transparent; text-align: center; padding: 0 0 var(--portfolio-space); }
+.revomed-site .rm-final>.rm-container { border-top: 1px solid #d6dfe7; padding: var(--portfolio-space) 0 0; }
+.revomed-site .rm-final .rm-eyebrow { color: var(--portfolio-blue); text-align: center; }
+.revomed-site .rm-final h2 { color: var(--portfolio-ink); font-size: clamp(36px,4.4vw,64px); font-weight: 300; line-height: 1.15; margin: 0 auto 24px; max-width: 900px; text-align: center; }
+.revomed-site .rm-final p { color: #536271; margin: 0 auto 32px; max-width: 620px; text-align: center; }
+.revomed-site .rm-final .rm-link { color: var(--portfolio-blue); }
+/* Pastel footer, rounded upper edge and the same content grid as the page. */
+.revomed-site .rm-footer { padding: 0; border-radius: var(--portfolio-radius) var(--portfolio-radius) 0 0; background: radial-gradient(ellipse at 10% 100%,#e9d6f7,transparent 65%),radial-gradient(ellipse at 95% 100%,#b6b9ef,transparent 60%),linear-gradient(120deg,#d9edfd,#d9e3f3); color: var(--portfolio-ink); }
+.revomed-site .rm-footer:after { display: none; }
+.revomed-site .rm-footer-invite { padding: 64px 0; border-color: #839eb333; gap: var(--portfolio-gap); }
+.revomed-site .rm-footer h2 { color: var(--portfolio-ink); font-weight: 300; }
+.revomed-site .rm-footer .rm-eyebrow { color: #536b7d; }
+.revomed-site .rm-footer-grid { padding: 72px 0; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: var(--portfolio-gap); }
+.revomed-site .rm-footer h3 { color: var(--portfolio-ink); font-size: 13px; font-weight: 500; }
+.revomed-site .rm-footer-brand img { background: #ffffff80; border-radius: 12px; }
+.revomed-site .rm-footer-brand p,.revomed-site .rm-footer-grid>div>a:not(:has(img)) { color: #40576b; font-size: 14px; }
+.revomed-site .rm-footer-bottom { border-color: #839eb333; color: #536b7d; padding: 24px 0; }
+/* Inner pages inherit the same margins, spacing and image radii. */
+.revomed-site .section { padding-block: var(--portfolio-space); }
+.revomed-site .page-hero:not(:has(.editable-hero-image)) { background: #e6eff8; color: var(--portfolio-ink); padding: 80px 0; }
+.revomed-site .page-hero:not(:has(.editable-hero-image)) h1 { color: var(--portfolio-ink); font-size: clamp(38px,4.4vw,64px); font-weight: 300; }
+.revomed-site .page-hero:not(:has(.editable-hero-image)) .eyebrow { color: var(--portfolio-blue); }
+.revomed-site :is(.about-story-image,.team-portrait,.team-group-image,.article-cover) { border-radius: var(--portfolio-radius); }
+.revomed-site :is(.about-story,.team-story,.team-group) { gap: var(--portfolio-gap); }
+.revomed-site .about-products>h2 { font-size: clamp(32px,3.7vw,54px); }
+.revomed-site .team-product-card { border-radius: var(--portfolio-radius); background: #eef4fb; padding: 28px; border: 1px solid #d9e3ec; }
+@media(min-width:1600px) { .revomed-site .rm-hero-content { width: 76%; } }
+@media(max-width:1000px) {
+    .revomed-site .rm-product-carousel { padding-left: 0; }
+    .rm-product-rail { display: none; }
+    .revomed-site .rm-section-heading.hp-intro { width: calc(100% - 2 * var(--portfolio-gutter)); gap: 32px; }
+    .revomed-site .rm-product,.revomed-site .rm-product-visual { min-height: 480px; }
+    .revomed-site .rm-footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
+    .revomed-site .rm-footer-grid>div:last-child { grid-column: 1/-1; }
+}
+@media(max-width:800px) {
+    .revomed-site .site-header .nav.nav-rebuild { min-height: 88px; padding: 16px 0; gap: 16px; }
+    .revomed-site .site-header .primary-nav { top: 80px; }
+    .rm-header-context { font-size: 10px; gap: 8px; }
+    .rm-header-context>span:last-child { display: none; }
+    .revomed-site .brand-logo,.revomed-site:has(.revomed-home) .brand-logo { width: 112px; }
+    .revomed-site .brand-logo .company-logo { width: 112px!important; height: 48px!important; }
+    .revomed-site:has(.revomed-home) .brand-logo .company-logo { width: 88px!important; height: 40px!important; }
+    .revomed-site .rm-hero { height: auto; min-height: 0; max-height: none; background: transparent; }
+    .revomed-site .rm-hero-image.hp-hero-image { position: relative; display: block; height: 360px; width: 100%; object-fit: cover; object-position: 70% center; }
+    .revomed-site .rm-hero-wash.hp-hero-shade { height: 360px; bottom: auto; background: linear-gradient(180deg,#082b5040,transparent 60%); }
+    .revomed-site .rm-hero-content { width: calc(100% - 2 * var(--portfolio-gutter)); min-height: 0; padding: 48px 0; align-items: center; text-align: center; }
+    .revomed-site .rm-hero-content>.rm-eyebrow { color: var(--portfolio-blue); text-align: center; margin-bottom: 20px; }
+    .revomed-site .rm-hero h1 { color: var(--portfolio-ink); font-size: clamp(40px,6.8vw,58px); font-weight: 300; text-align: center; max-width: 620px; margin: 0 0 24px; }
+    .revomed-site .rm-hero-content>p { color: #536271; font-size: 16px; max-width: 520px; text-align: center; margin: 0 0 24px; }
+    .revomed-site .rm-hero .rm-link { color: var(--portfolio-blue); }
+    .revomed-site .rm-hero-bottom { position: static; width: calc(100% - 2 * var(--portfolio-gutter)); color: #637787; padding: 0 0 24px; margin: 0 auto; }
+    .revomed-site .rm-opportunity>.rm-container { flex-direction: row; align-items: center; justify-content: space-between; padding: 16px 0; gap: 16px; }
+    .revomed-site .rm-opportunity>.rm-container>span { display: none; }
+    .revomed-site .rm-opportunity a { width: 100%; justify-content: space-between; }
+    .revomed-site .rm-section-heading.hp-intro { grid-template-columns: 1fr; padding: 32px; gap: 24px; }
+    .revomed-site .rm-section-heading.hp-intro h2 { font-size: clamp(32px,5.5vw,44px); text-align: center; }
+    .revomed-site .rm-section-heading.hp-intro .rm-eyebrow { text-align: center; }
+    .revomed-site .rm-section-heading.hp-intro>.rm-intro-statement { font-size: 25px; }
+    .rm-intro-stage { padding-bottom: 180px; }
+    .revomed-site .rm-intro-backdrop { height: 65%; }
+    .revomed-site .rm-product { grid-template-columns: 1fr; min-height: 0; }
+    .revomed-site .rm-product-visual { grid-column: 1; grid-row: 1; width: 100%; min-height: 0; max-height: none; aspect-ratio: 1.35; }
+    .revomed-site .rm-product-copy { grid-column: 1; grid-row: 2; padding: 32px; }
+    .revomed-site .rm-product-copy h3 { font-size: 34px; }
+    .revomed-site .rm-product-copy p { max-width: none; }
+    .rm-product-picker { gap: 16px; }
+    .rm-picker-card { padding: 16px; border-radius: 20px; }
+    .rm-picker-name { font-size: 17px; padding-right: 0; }
+    .rm-picker-arrow { display: none; }
+    .revomed-site .rm-impact { grid-template-columns: 1fr; min-height: 0; }
+    .revomed-site .rm-impact-art { min-height: 0; height: auto; aspect-ratio: 1.55; max-height: none; }
+    .revomed-site .rm-impact-copy { padding: 32px; }
+    .revomed-site .rm-impact h2 { font-size: 36px; }
+    .revomed-site .rm-careers { min-height: 520px; padding: 48px 0; }
+    .revomed-site .rm-careers>.rm-container { width: calc(100% - 64px); }
+    .revomed-site .rm-careers h2 { font-size: 38px; }
+    .revomed-site .rm-careers-shade { background: #082b50b8; }
+    .revomed-site .rm-news .rm-section-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 32px; }
+    .revomed-site .rm-news .rm-section-heading>.rm-link { justify-self: start; }
+    .revomed-site .rm-news-grid { gap: 40px; }
+    .revomed-site .rm-news-card h3 { font-size: 26px; }
+    .revomed-site .rm-footer-grid { grid-template-columns: 1fr 1fr; padding: 48px 0; gap: 32px; }
+    .revomed-site .rm-footer-brand { grid-column: 1/-1; }
+    .revomed-site .rm-footer-invite { padding: 48px 0; }
+    .revomed-site .rm-final h2 { font-size: 38px; }
+}
+@media(max-width:480px) {
+    .revomed-site .rm-hero-image.hp-hero-image,.revomed-site .rm-hero-wash.hp-hero-shade { height: 300px; }
+    .revomed-site .rm-hero h1 { font-size: 41px; }
+    .revomed-site .rm-section-heading.hp-intro { padding: 28px; }
+    .revomed-site .rm-product-copy { padding: 28px; }
+    .rm-product-picker { grid-template-columns: 1fr; gap: 16px; }
+    .rm-picker-card { display: grid; grid-template-columns: 72px 1fr 20px; align-items: center; gap: 16px; padding: 16px; }
+    .rm-picker-index { display: none; }
+    .rm-picker-card img { margin: 0; width: 72px; height: 64px; }
+    .rm-picker-name { font-size: 20px; }
+    .rm-picker-arrow { display: block; position: static; }
+    .revomed-site .rm-impact-copy { padding: 28px; }
+    .revomed-site .rm-impact h2,.revomed-site .rm-careers h2 { font-size: 34px; }
+}

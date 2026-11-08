@@ -1,6 +1,6 @@
 <article class="news-card {{ $isLatest ? 'news-card-latest' : 'news-card-compact' }}">
     <a class="news-image-link" href="{{ route('news.show', $post->slug) }}" tabindex="-1" aria-hidden="true">
-        <img src="{{ $post->cover_image ? asset('storage/'.$post->cover_image) : asset('images/hero-healthcare-team.png') }}" alt="" loading="lazy">
+        <img src="{{ $post->cover_image ? asset('storage/'.$post->cover_image) : asset('images/ai/research-team.webp') }}" alt="" loading="lazy">
     </a>
     <div class="news-card-copy">
         @if($isLatest)<span class="news-latest-label">{{ $locale === 'en' ? 'LATEST NEWS' : 'BẢN TIN MỚI NHẤT' }}</span>@endif

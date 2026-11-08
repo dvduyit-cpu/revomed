@@ -64,11 +64,11 @@ class PageContentManagementTest extends TestCase
         $this->put('/admin/noi-dung/trang-chu', ['settings' => [$key => '1']])
             ->assertSessionHasNoErrors();
         $this->get('/')->assertOk()->assertSee('class="hp-standards-white"', false)
-            ->assertDontSee(asset('images/cardiovascular-solutions.png'), false);
+            ->assertDontSee(asset('images/ai/coronary-stent.webp'), false);
         $this->put('/admin/noi-dung/trang-chu', ['settings' => [$key => '0']])
             ->assertSessionHasNoErrors();
         $this->get('/')->assertOk()->assertSee('class="hp-photo-section hp-standards-background"', false)
-            ->assertSee(asset('images/cardiovascular-solutions.png'), false);
+            ->assertSee(asset('images/ai/coronary-stent.webp'), false);
         $this->put('/admin/noi-dung/trang-chu', ['settings' => [$key => 'invalid']])
             ->assertSessionHasErrors('settings.'.$key);
     }
@@ -92,7 +92,7 @@ class PageContentManagementTest extends TestCase
                 ->assertSessionHasNoErrors();
             $this->assertDatabaseHas('site_settings', ['key' => $key, 'value' => '']);
         }
-        $this->get('/')->assertOk()->assertSee(asset('images/cardiovascular-solutions.png'), false);
+        $this->get('/')->assertOk()->assertSee(asset('images/ai/coronary-stent.webp'), false);
     }
 
     public function test_website_colors_can_be_previewed_saved_and_validated(): void
@@ -246,6 +246,6 @@ class PageContentManagementTest extends TestCase
         $this->put('/admin/noi-dung/doi-ngu', ['settings' => [
             'team_group_image' => '', 'team_group_description_vi' => '',
         ]])->assertSessionHasNoErrors();
-        $this->get('/doi-ngu')->assertSee(asset('images/hero-healthcare-team.png'));
+        $this->get('/doi-ngu')->assertSee(asset('images/ai/research-team.webp'));
     }
 }

@@ -9,7 +9,7 @@
         <div class="form-section-title"><span><x-admin-icon name="settings" /></span><div><h2>Cài đặt chung</h2><p>Tên hệ thống và chân trang áp dụng cho toàn bộ khu vực quản trị.</p></div></div>
         <div class="form-grid">
             <label class="span-2">Tên hệ thống <b>*</b><input name="admin_name" required maxlength="120" value="{{ old('admin_name', $settings['admin_name'] ?? 'Hoang Thuoc Medical') }}"></label>
-            <div class="branding-preview span-2"><img data-logo-preview src="{{ !empty($settings['site_logo']) ? route('site.logo', ['v' => substr(hash('sha256', $settings['site_logo']), 0, 12)], false) : asset('images/hoang-thuoc-logo.png') }}" alt="Logo hiện tại"><div><strong>{{ $settings['admin_name'] ?? 'Hoang Thuoc Medical' }}</strong><small>Logo dùng cho website, quản trị và trang đăng nhập</small></div></div>
+            <div class="branding-preview span-2"><img data-logo-preview src="{{ !empty($settings['site_logo']) ? route('site.logo', ['v' => substr(hash('sha256', $settings['site_logo']), 0, 12)], false) : asset('images/revomed-logo.svg') }}" alt="Logo hiện tại"><div><strong>{{ $settings['admin_name'] ?? 'Hoang Thuoc Medical' }}</strong><small>Logo dùng cho website, quản trị và trang đăng nhập</small></div></div>
             <label class="span-2">Tải logo mới<input type="file" name="logo" accept="image/png,image/jpeg,image/webp" data-logo-input><small>PNG, JPG hoặc WebP, tối đa 2 MB. Để trống để giữ logo hiện tại.</small></label>
             @error('logo')<p class="alert error span-2" role="alert">{{ $message }}</p>@enderror
             @if(!empty($settings['site_logo']))<label class="check span-2"><input type="checkbox" name="remove_logo" value="1" @checked(old('remove_logo'))> Dùng lại logo mặc định</label>@endif

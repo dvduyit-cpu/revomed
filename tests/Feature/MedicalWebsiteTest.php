@@ -13,9 +13,9 @@ class MedicalWebsiteTest extends TestCase
 
     public function test_revised_public_pages_render_and_link_to_the_team(): void
     {
-        $this->get('/')->assertOk()->assertSee('Công nghệ phù hợp.')->assertSee(route('team'));
-        $this->get('/gioi-thieu')->assertOk()->assertSee('Một góc nhìn mới');
-        $this->get('/doi-ngu')->assertOk()->assertSee('Nhiều chuyên môn.')->assertSee('ecg-timeline');
+        $this->get('/')->assertOk()->assertSee('Kết nối công nghệ.')->assertSee(route('team'));
+        $this->get('/gioi-thieu')->assertOk()->assertSee('Chuyên tâm công nghệ.');
+        $this->get('/doi-ngu')->assertOk()->assertSee('Kết nối chuyên môn.')->assertSee('ecg-timeline');
         $this->get('/lien-he')->assertOk()->assertSee('Sản phẩm &amp; Giải pháp', false)
             ->assertDontSee('maps/search')->assertSee('name="subject"', false);
     }

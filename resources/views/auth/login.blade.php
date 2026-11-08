@@ -11,7 +11,7 @@
 <body>
 <main class="admin-login">
     <section class="login-intro">
-        <a class="brand" href="{{ route('home') }}"><span class="brand-logo"><img src="{{ !empty($site['site_logo']) ? route('site.logo', ['v' => substr(hash('sha256', $site['site_logo']), 0, 12)], false) : asset('images/hoang-thuoc-logo.png') }}" alt=""></span><span><strong>{{ $site['admin_name'] ?? 'Hoang Thuoc Medical' }}</strong><small>QUẢN TRỊ WEBSITE</small></span></a>
+        <a class="brand" href="{{ route('home') }}"><span class="brand-logo"><img src="{{ !empty($site['site_logo']) ? route('site.logo', ['v' => substr(hash('sha256', $site['site_logo']), 0, 12)], false) : asset('images/revomed-logo.svg') }}" alt=""></span><span><strong>{{ $site['admin_name'] ?? 'Hoang Thuoc Medical' }}</strong><small>QUẢN TRỊ WEBSITE</small></span></a>
         <span class="eyebrow">KHÔNG GIAN LÀM VIỆC</span><h1>Kết nối nhân tài.<br>Phát triển đội ngũ.</h1><p>Quản lý tuyển dụng, hồ sơ ứng viên và nội dung website trong cùng một không gian.</p>
     </section>
     <section class="login-form-wrap"><div class="login-form">
