@@ -19,7 +19,7 @@ class ReplaceWebsiteImages extends Command
     public function handle(): int
     {
         $disk = Storage::disk('public');
-        $names = ['heart-hero', 'coronary-stent', 'balloon-catheter', 'coronary-accessories', 'research-laboratory', 'research-team'];
+        $names = ['heart-hero', 'vascular-anatomy-hero', 'coronary-stent', 'balloon-catheter', 'coronary-accessories', 'research-laboratory', 'research-team'];
         $paths = [];
         foreach ($names as $name) {
             $source = public_path('images/ai/'.$name.'.webp');
@@ -69,7 +69,7 @@ class ReplaceWebsiteImages extends Command
                 }
             }
             $settings = array_replace($settings, [
-                'home_hero_image' => $paths['heart-hero'],
+                'home_hero_image' => $paths['vascular-anatomy-hero'],
                 'culture_image' => $paths['research-laboratory'],
                 'about_hero_image' => $paths['heart-hero'],
                 'about_story_image' => $paths['research-laboratory'],
@@ -126,7 +126,7 @@ class ReplaceWebsiteImages extends Command
             }
             $this->info('Deleted '.count($oldImages).' old media images. Branding preserved.');
         }
-        $this->info('Installed 6 AI images; updated page images, products, news and jobs.');
+        $this->info('Installed '.count($paths).' AI images; updated page images, products, news and jobs.');
 
         return self::SUCCESS;
     }

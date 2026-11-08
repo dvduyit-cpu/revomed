@@ -3,11 +3,12 @@
 @section('content')
 @php
     $en = $locale === 'en';
-    $heroImage = !empty($site['home_hero_image']) ? asset('storage/'.$site['home_hero_image']) : asset('images/ai/heart-hero.webp');
+    $heroImage = !empty($site['home_hero_image']) ? asset('storage/'.$site['home_hero_image']) : asset('images/ai/vascular-anatomy-hero.webp');
+    $anatomyHero = empty($site['home_hero_image']) || str_ends_with($site['home_hero_image'], 'vascular-anatomy-hero.webp');
     $products = \App\Support\TeamProducts::all()->where('is_published', 1)->values();
 @endphp
 <div class="home-premium revomed-home">
-<section class="rm-hero hp-hero {{ empty($site['home_hero_image']) ? 'rm-hero-medical' : '' }}" aria-labelledby="home-heading">
+<section class="rm-hero hp-hero {{ $anatomyHero ? 'rm-hero-anatomy' : '' }}" aria-labelledby="home-heading">
     <img class="rm-hero-image hp-hero-image" src="{{ $heroImage }}" alt="{{ $en ? 'REVOMED medical solutions' : 'Giải pháp y khoa REVOMED' }}" fetchpriority="high"><div class="rm-hero-wash hp-hero-shade"></div>
     <div class="rm-container rm-hero-content hp-hero-content"><span class="rm-eyebrow" data-content-keys="home_eyebrow_vi">{{ $site['home_eyebrow_vi'] }}</span><h1 id="home-heading" data-content-keys="home_title_vi">{!! nl2br(e($site['home_title_vi'])) !!}</h1><p data-content-keys="home_body_vi">{{ $site['home_body_vi'] }}</p><a class="rm-link" href="{{ route('about') }}"><span class="rm-circle" aria-hidden="true">↗</span>{{ $en ? 'Discover REVOMED' : 'Khám phá REVOMED' }}</a></div>
     <div class="rm-hero-bottom rm-container"><span>REVOLUTION MEDICAL</span><a href="#giai-phap">{{ $en ? 'Scroll to explore' : 'Khám phá thêm' }} <span aria-hidden="true">↓</span></a><span class="rm-hero-page">{{ $en ? 'MEDICAL SOLUTIONS' : 'GIẢI PHÁP Y KHOA' }}</span></div>
@@ -19,7 +20,7 @@
         <div class="rm-container rm-section-heading hp-intro"><div><span class="rm-eyebrow" data-content-keys="home_block_2_vi">{{ $site['home_block_2_vi'] }}</span><h2 data-content-keys="home_intro_title_vi">{!! nl2br(e($site['home_intro_title_vi'])) !!}</h2></div><p data-content-keys="home_intro_body_vi">{{ $site['home_intro_body_vi'] }}</p><p class="rm-intro-statement" data-content-keys="about_block_1_vi">{{ $site['about_block_1_vi'] }}</p></div>
     </div>
     @if($products->isNotEmpty())
-    <div class="rm-container rm-product-carousel" data-rm-carousel role="region" aria-label="{{ $en ? 'Medical solutions' : 'Giải pháp y khoa' }}"><span class="rm-product-rail">{{ $en ? 'INTERVENTIONAL CARDIOLOGY' : 'GIẢI PHÁP CAN THIỆP TIM MẠCH' }}</span><div class="rm-product-track" tabindex="0">
+    <div class="rm-container rm-product-carousel" data-rm-carousel role="region" aria-label="{{ $en ? 'Medical solutions' : 'Giải pháp y khoa' }}"><span class="rm-product-rail">{{ $en ? 'NEUROVASCULAR · CORONARY · CARDIAC' : 'MẠCH NÃO · MẠCH VÀNH · TIM' }}</span><div class="rm-product-track" tabindex="0">
     @foreach($products as $product)
         @php
             $name = $en && filled($product['name_en'] ?? '') ? $product['name_en'] : $product['name'];

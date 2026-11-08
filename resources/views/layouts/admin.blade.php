@@ -8,12 +8,12 @@
     <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Tổng quan') · {{ $adminName }}</title>
-    <link rel="stylesheet" href="{{ asset('css/admin-workspace.css') }}?v={{ filemtime(public_path('css/admin-workspace.css')) }}">
-    <script defer src="{{ asset('js/admin-workspace.js') }}?v={{ filemtime(public_path('js/admin-workspace.js')) }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/admin-workspace.css') }}?v={{ \App\Support\AssetVersion::get('css/admin-workspace.css') }}">
+    <script defer src="{{ asset('js/admin-workspace.js') }}?v={{ \App\Support\AssetVersion::get('js/admin-workspace.js') }}"></script>
     @include('partials.admin-theme')
-    <link rel="stylesheet" href="{{ asset('css/admin-navigation.css') }}?v={{ filemtime(public_path('css/admin-navigation.css')) }}">
-    <link rel="stylesheet" href="{{ asset('css/admin-content.css') }}?v={{ filemtime(public_path('css/admin-content.css')) }}">
-    <script defer src="{{ asset('js/password-toggle.js') }}?v={{ filemtime(public_path('js/password-toggle.js')) }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/admin-navigation.css') }}?v={{ \App\Support\AssetVersion::get('css/admin-navigation.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin-content.css') }}?v={{ \App\Support\AssetVersion::get('css/admin-content.css') }}">
+    <script defer src="{{ asset('js/password-toggle.js') }}?v={{ \App\Support\AssetVersion::get('js/password-toggle.js') }}"></script>
 </head>
 <body class="admin-body" data-admin-user="{{ auth()->id() }}">
 <a class="skip-link" href="#main-content">Đến nội dung chính</a>

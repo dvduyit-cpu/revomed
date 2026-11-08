@@ -50,7 +50,7 @@ class ReplaceWebsiteImagesTest extends TestCase
         $this->assertSame(9, $product['sort_order']);
         $this->assertStringContainsString('/storage/media/ai/research-laboratory.webp', $post->fresh()->content_vi);
         $this->assertSame('draft', $post->fresh()->status);
-        $this->assertCount(6, $disk->allFiles('media/ai'));
+        $this->assertCount(7, $disk->allFiles('media/ai'));
         foreach ($disk->allFiles('media/ai') as $path) {
             $this->assertNotFalse(getimagesize($disk->path($path)));
         }
@@ -64,7 +64,7 @@ class ReplaceWebsiteImagesTest extends TestCase
         $this->artisan('website:replace-images')->assertSuccessful();
         $this->artisan('website:replace-images')->assertSuccessful();
         Storage::disk('public')->assertExists('media/old.png');
-        $this->assertCount(6, Storage::disk('public')->allFiles('media/ai'));
+        $this->assertCount(7, Storage::disk('public')->allFiles('media/ai'));
         $this->assertCount(0, TeamProducts::all());
     }
 }

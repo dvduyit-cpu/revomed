@@ -4,9 +4,9 @@
     @include('partials.favicon')
     <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Đăng nhập · {{ $site['admin_name'] ?? 'Hoang Thuoc Medical' }}</title>
-    <link rel="stylesheet" href="{{ asset('css/admin-workspace.css') }}?v={{ filemtime(public_path('css/admin-workspace.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/admin-workspace.css') }}?v={{ \App\Support\AssetVersion::get('css/admin-workspace.css') }}">
     @include('partials.admin-theme')
-    <script defer src="{{ asset('js/password-toggle.js') }}?v={{ filemtime(public_path('js/password-toggle.js')) }}"></script>
+    <script defer src="{{ asset('js/password-toggle.js') }}?v={{ \App\Support\AssetVersion::get('js/password-toggle.js') }}"></script>
 </head>
 <body>
 <main class="admin-login">

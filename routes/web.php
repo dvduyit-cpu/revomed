@@ -17,6 +17,7 @@ use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/san-pham/{category}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
 Route::get('/thuong-hieu/logo', \App\Http\Controllers\SiteLogoController::class)->name('site.logo');
 Route::get('/tuyen-dung', [JobController::class, 'index'])->name('jobs.index');
 Route::view('/gioi-thieu', 'pages.about')->name('about');

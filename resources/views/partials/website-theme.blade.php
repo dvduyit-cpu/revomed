@@ -17,4 +17,4 @@
     --ink: var(--web-heading); --navy: var(--web-dark); --muted: var(--web-text); --sky: var(--web-surface);
 }
 </style>
-<link rel="stylesheet" href="{{ asset('css/website-theme.css') }}?v={{ filemtime(public_path('css/website-theme.css')) }}">
+<link rel="stylesheet" href="{{ asset('css/website-theme.css') }}?v={{ \App\Support\AssetVersion::get('css/website-theme.css') }}">

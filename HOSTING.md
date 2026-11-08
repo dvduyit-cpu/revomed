@@ -2,6 +2,13 @@
 
 ## Cập nhật host đang chạy bằng Git
 
+Nếu tên miền dùng `public_html` riêng, `git pull` trong thư mục ứng dụng không tự
+chép các tệp ở `public/` sang `public_html`. Sau mỗi lần cập nhật, chép nội dung
+`public/css/`, `public/js/`, `public/images/` vào các thư mục `css/`, `js/`,
+`images/` tương ứng trong document root của tên miền. Giữ nguyên `index.php`,
+`.htaccess` và liên kết `storage` đã cấu hình trên host. Nếu document root đã trỏ
+thẳng tới `public/` của checkout thì không cần bước chép riêng.
+
 Chạy trong thư mục chứa `artisan` trên host:
 
 ```bash
@@ -19,6 +26,30 @@ Lệnh in đường dẫn bản sao nội dung cũ trong `storage/app/private/de
 Muốn chỉ bổ sung mục còn thiếu và giữ toàn bộ nội dung đang dùng, bỏ `--overwrite`.
 Giữ nguyên `.env` và `APP_KEY`; không chạy `migrate:fresh`, `db:seed` hay `key:generate`.
 Database, tài khoản, tin tuyển dụng, bài viết và hồ sơ vẫn được giữ.
+
+### Lỗi 500 sau khi cập nhật giao diện
+
+Nếu `/admin/login` và `/up` vẫn chạy nhưng các trang công khai trả 500, kiểm tra
+`storage/logs/laravel.log` trên host. Lỗi `filemtime(): stat failed for ...css/medical-portfolio.css`
+cho biết bản view mới đã được đưa lên nhưng tệp CSS chưa có tại public path mà
+Laravel đang sử dụng. Mã hiện tại dùng `App\Support\AssetVersion` để thiếu tệp
+tĩnh không còn làm hỏng việc render HTML.
+
+1. Cập nhật đầy đủ mã nguồn, gồm `app/Support/AssetVersion.php` và các view mới.
+2. Đồng bộ các thư mục `public/css`, `public/js`, `public/images` vào document root
+   theo hướng dẫn ở trên. Kiểm tra `https://TEN-MIEN/css/medical-portfolio.css` và
+   `https://TEN-MIEN/images/ai/heart-hero.webp` phải trả 200.
+3. Chạy trong thư mục ứng dụng:
+
+   ```bash
+   php artisan optimize:clear
+   php artisan view:cache
+   ```
+
+4. Tải lại trang chủ. Nếu vẫn 500, đọc lỗi mới nhất trong log trên host; log của
+   máy phát triển không phản ánh lỗi đang xảy ra trên máy chủ.
+
+Không cần cài lại database, đổi `APP_KEY` hay chạy seeder để sửa lỗi tệp giao diện.
 
 ## Nhập toàn bộ dữ liệu hiện tại
 
